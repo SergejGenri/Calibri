@@ -2,8 +2,8 @@
   "name": "calibri",
   "scripts": {
     "start": "npm run watch",
-    "watch": "watchify -s ChatWidget widget/js/calibri.widget.js -o widget/bundle.js -d",
-    "build:prod": "browserify -s ChatWidget widget/js/calibri.widget.js | uglifyjs > widget/bundle.min.js"
+    "watch": "watchify -s ChatWidget widget/js/main.js -o widget/calibri.js -d",
+    "build:prod": "browserify -s ChatWidget widget/js/main.js | uglifyjs > widget/calibri.min.js"
   },
   "browserify": {
     "transform": [

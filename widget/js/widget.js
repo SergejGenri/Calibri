@@ -1,22 +1,33 @@
 require('jsrender');
 
-var TEMPLATES = {
-    login: require('./templates/login.html'),
-    loading: require('./templates/loading.html'),
-    chat: require('./templates/chat.html')
-};
+var config = require('./config');
 
 $.widget('custom.calibri', {
     options: {
-
+        quickblox: {
+            appId: config.QB.app.id,
+            authKey: config.QB.app.authKey,
+            authSecret: config.QB.app.authSecret
+        }
     },
 
     _create: function () {
-        var html = $.templates(TEMPLATES.login)();
+        var html = $.templates(config.TEMPLATES.login)(),
+            QBApp = this.options.quickblox;
 
-        this.element.addClass('calibri reg-chat');
+        this.element.addClass('calibri');
         this.element.html(html);
         this._build();
+
+        this.service = QB;
+        this.service.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config.QB.config);
+        this.service.createSession(function(err, result) {
+            if (err) {
+                console.log(err.detail);
+            } else {
+                console.log(result);
+            }
+        });
     },
 
     _build: function () {
@@ -31,12 +42,12 @@ $.widget('custom.calibri', {
             minWidth: 270
         });
 
-        self.element.find('.calibri-header').on('mousedown', function () {
+        // self.element.find('.calibri-header').on('mousedown', function () {
             self.element.draggable({
                 containment: 'document',
                 handle: '.calibri-header'
             });
-        });
+        // });
 
         self.element.find('.close-reg-chat').on('mousedown', function () {
             self.element.addClass('hiden');
@@ -50,11 +61,7 @@ $.widget('custom.calibri', {
     _destroy: function () {
         this.element.resizable("destroy");
         this.element.draggable("destroy");
-        this.element.removeClass();
+        this.element.removeAttr('class style');
         this.element.empty();
     }
 });
-
-var elem = $('<div></div>').appendTo(document.body);
-
-module.exports = elem;
