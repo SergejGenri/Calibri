@@ -21,9 +21,9 @@ var config = {
     },
 
     TEMPLATES: {
-        login: require('./templates/login.html'),
-        loading: require('./templates/loading.html'),
-        chat: require('./templates/chat.html')
+        login: require('../templates/login.html'),
+        loading: require('../templates/loading.html'),
+        chat: require('../templates/chat.html')
     }
 };
 
