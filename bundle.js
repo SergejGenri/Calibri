@@ -13,9 +13,9 @@ $.widget('custom.calibri', {
     },
 
     _create: function () {
-        var html = $.templates(TEMPLATES.chat)();
+        var html = $.templates(TEMPLATES.login)();
 
-        this.element.addClass('calibri talk-chat');
+        this.element.addClass('calibri reg-chat');
         this.element.html(html);
         this._build();
     },

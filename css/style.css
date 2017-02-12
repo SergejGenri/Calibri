@@ -60,7 +60,7 @@
 	color: #fff;
 	font-size: .9em;
 	padding: 5px;
-	margin: 5px 0 0 8.33333333%;
+	margin: 5px 0 5px 8.33333333%;
 }
 
 .msg-client-text {
@@ -109,6 +109,10 @@
 
 .reg-form {
 	margin-top: 40%;
+}
+
+.form-group input {
+    margin-bottom: 10px;
 }
 
 .loader-box {
