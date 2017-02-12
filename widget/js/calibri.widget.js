@@ -57,4 +57,4 @@ $.widget('custom.calibri', {
 
 var elem = $('<div></div>').appendTo(document.body);
 
-module.exports = elem.calibri();
+module.exports = elem;

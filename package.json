@@ -1,8 +1,9 @@
 {
   "name": "calibri",
   "scripts": {
-    "build": "browserify -s Calibri js/calibri.widget.js > bundle.js",
-    "build:prod": "browserify -s Calibri js/calibri.widget.js | uglifyjs > bundle.min.js"
+    "start": "npm run watch",
+    "watch": "watchify -s ChatWidget widget/js/calibri.widget.js -o widget/bundle.js -d",
+    "build:prod": "browserify -s ChatWidget widget/js/calibri.widget.js | uglifyjs > widget/bundle.min.js"
   },
   "browserify": {
     "transform": [
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "browserify": "^14.0.0",
-    "uglify-js": "^2.7.5"
+    "uglify-js": "^2.7.5",
+    "watchify": "^3.9.0"
   }
 }
