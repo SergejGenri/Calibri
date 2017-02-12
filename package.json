@@ -1,0 +1,21 @@
+{
+  "name": "calibri",
+  "scripts": {
+    "build": "browserify -s Calibri js/calibri.widget.js > bundle.js",
+    "build:prod": "browserify -s Calibri js/calibri.widget.js | uglifyjs > bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "jsrender/tmplify"
+      ]
+    ]
+  },
+  "dependencies": {
+    "jsrender": "^0.9.83"
+  },
+  "devDependencies": {
+    "browserify": "^14.0.0",
+    "uglify-js": "^2.7.5"
+  }
+}
