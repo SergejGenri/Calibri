@@ -10,60 +10,72 @@ function ChatView(widget) {
     this.widget = widget;
     this.viewport = widget.viewport;
     this.service = widget.service;
-    this.currentUser = widget.currentUser;
     this.init();
 }
 
 ChatView.prototype.init = function () {
-    this.viewport.on('submit', '.js-send', this.submit.bind(this));
-    this.service.chat.onMessageListener = this.onMessage;
+    this.viewport.on('submit', '.js-send', this.sendMessage.bind(this));
+    this.service.chat.onMessageListener = this._onMessage.bind(this);
 };
 
 ChatView.prototype.render = function () {
     var template = $.templates(tmpl);
     this.viewport.html(template());
-    this.startDialog();
+
+    this.dialog = this.viewport.find('.js-dialog');
+    this.showDialog();
 };
 
-ChatView.prototype.startDialog = function () {
-    this.dialog = this.viewport.find('.js-dialog');
-    this.addMsgToDialog(new Message({
+ChatView.prototype.showDialog = function () {
+    var msg = new Message({
         text: this.widget.options.startMessage,
         isAdmin: true
-    }));
+    });
+    this.updateDialog(msg);
 };
 
-ChatView.prototype.addMsgToDialog = function (msg) {
+ChatView.prototype.updateDialog = function (msg) {
     this.dialog.append(msg.render());
+    this.dialog.scrollTop(this.dialog.height());
 };
 
-ChatView.prototype.submit = function (event) {
+ChatView.prototype.sendMessage = function (event) {
     var $text = this.viewport.find('.js-message'),
         message = $text.val().trim();
 
     event.preventDefault();
 
     if (message) {
-        this.sendMessage(message);
+        this._sendQBMessage(message);
+        $text.val('');
     }
 };
 
-ChatView.prototype.sendMessage = function (message) {
-    var opponentId = this.widget.options.admin.id,
+/* START: QuickBlox 1-1 chat logic
+ -------------------------------------------------------------------- */
+ChatView.prototype._sendQBMessage = function (text) {
+    var adminId = this.widget.options.admin.id,
         msg = {
             type: 'chat',
-            body: message
+            body: text,
+            extension: {
+                save_to_history: 1,
+                dialog_id: this.widget.dialogId
+            }
         };
 
-    this.service.chat.send(opponentId, msg);
-    this.onMessage(this.currentUser.userId, msg);
+    this.service.chat.send(adminId, msg);
+    this._onMessage(this.widget.currentUser.userId, msg);
 };
 
-ChatView.prototype.onMessage = function (userId, msg) {
-    console.log(userId, msg);
-    this.addMsgToDialog(new Message({
-        text: msg.body
-    }));
+ChatView.prototype._onMessage = function (userId, message) {
+    var msg = new Message({
+        text: message.body,
+        isAdmin: userId !== this.widget.currentUser.userId
+    });
+    this.updateDialog(msg);
 };
+/* END: QuickBlox 1-1 chat logic
+ -------------------------------------------------------------------- */
 
 module.exports = ChatView;

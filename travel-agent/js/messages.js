@@ -27,6 +27,11 @@ function setupMsgScrollHandler() {
 // on message listener
 //
 function onMessage(userId, msg) {
+  if (!dialogs[msg.extension._id]) {
+      $('#dialogs-list').empty();
+      retrieveChatDialogs();
+  }
+
   // check if it's a message for current dialog
   if (isMessageForCurrentDialog(userId, msg.dialog_id)){
     dialogsMessages.push(msg);
@@ -194,7 +199,7 @@ function sendMessage(text, attachmentFileId) {
         type: currentDialog.type === 3 ? 'chat' : 'groupchat',
         body: text,
         extension: {
-            // save_to_history: 1,
+            save_to_history: 1,
         },
         markable: 1
     };

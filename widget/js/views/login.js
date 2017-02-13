@@ -9,7 +9,6 @@ function LoginView(widget) {
     this.widget = widget;
     this.viewport = widget.viewport;
     this.service = widget.service;
-    this.currentUser = widget.currentUser;
     this.init();
 }
 
@@ -37,11 +36,11 @@ LoginView.prototype.submit = function (event) {
 /* START: QuickBlox connect to chat logic
 -------------------------------------------------------------------- */
 LoginView.prototype._createSession = function (nickname) {
-    this.currentUser = {
+    this.widget.currentUser = {
         login: nickname,
         password: config.defaultPass
     };
-    this.service.createSession(this.currentUser, this._onCreateSession.bind(this));
+    this.service.createSession(this.widget.currentUser, this._onCreateSession.bind(this));
 };
 
 LoginView.prototype._onCreateSession = function (err, res) {
@@ -59,7 +58,7 @@ LoginView.prototype._onCreateSession = function (err, res) {
 };
 
 LoginView.prototype._createUser = function () {
-    this.service.users.create(this.currentUser, this._onCreateUser.bind(this));
+    this.service.users.create(this.widget.currentUser, this._onCreateUser.bind(this));
 };
 
 LoginView.prototype._onCreateUser = function (err, res) {
@@ -71,7 +70,7 @@ LoginView.prototype._onCreateUser = function (err, res) {
 };
 
 LoginView.prototype._login = function () {
-    this.service.login(this.currentUser, this._onLogin.bind(this));
+    this.service.login(this.widget.currentUser, this._onLogin.bind(this));
 };
 
 LoginView.prototype._onLogin = function (err, res) {
@@ -83,14 +82,34 @@ LoginView.prototype._onLogin = function (err, res) {
 };
 
 LoginView.prototype._connect = function (userId) {
-    this.currentUser.userId = userId;
-    this.service.chat.connect(this.currentUser, this._onConnect.bind(this));
+    this.widget.currentUser.userId = userId;
+    this.service.chat.connect(this.widget.currentUser, this._onConnect.bind(this));
 };
 
 LoginView.prototype._onConnect = function (err, res) {
     if (err) {
         console.log(err);
     } else {
+        this._createDialog();
+    }
+};
+
+// QuickBlox create 1-1 dialog logic
+LoginView.prototype._createDialog = function () {
+    var adminId = this.widget.options.admin.id,
+        params = {
+            type: 3,
+            occupants_ids: [adminId]
+        };
+
+    this.service.chat.dialog.create(params, this._onCreateDialog.bind(this));
+};
+
+LoginView.prototype._onCreateDialog = function (err, res) {
+    if (err) {
+        console.log(err);
+    } else {
+        this.widget.dialogId = res._id;
         this.viewport.trigger('changeView', ['chat']);
     }
 };
