@@ -48,7 +48,7 @@
     height: calc(100% - 59px);
     margin-bottom: 5px;
     width: 100%;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .msg-client {
@@ -69,11 +69,12 @@
 
 .msg-client-text {
     padding: 5px 0;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 .msg-admin-text {
     padding: 5px 0;
+    word-wrap: break-word;
 }
 
 .msg-time-client {
