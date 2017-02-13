@@ -1,7 +1,7 @@
 var QBApp = {
-    appId: 28783,
-    authKey: 'b5bVGCHHv6rcAmD',
-    authSecret: 'ySwEpardeE7ZXHB'
+    appId: 53089,
+    authKey: 'Em7LB2Db24rxWE4',
+    authSecret: '3JsGq29SUbgxvYb'
 };
 
 var config = {
@@ -30,13 +30,13 @@ var config = {
 };
 
 var QBUser1 = {
-        id: 23285724,
+        id: 23957181,
         name: 'DemoChatUser1',
         login: 'DemoChatUser1',
         pass: 'DemoChatUser1'
     },
     QBUser2 = {
-        id: 23285731,
+        id: 23957189,
         name: 'DemoChatUser2',
         login: 'DemoChatUser2',
         pass: 'DemoChatUser2'

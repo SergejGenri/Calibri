@@ -194,7 +194,7 @@ function sendMessage(text, attachmentFileId) {
         type: currentDialog.type === 3 ? 'chat' : 'groupchat',
         body: text,
         extension: {
-            save_to_history: 1,
+            // save_to_history: 1,
         },
         markable: 1
     };

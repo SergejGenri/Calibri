@@ -4,9 +4,9 @@ var config = {
     // QuickBlox SDK settings
     QB: {
         app: {
-            id: 28783,
-            authKey: 'b5bVGCHHv6rcAmD',
-            authSecret: 'ySwEpardeE7ZXHB'
+            id: 53089,
+            authKey: 'Em7LB2Db24rxWE4',
+            authSecret: '3JsGq29SUbgxvYb'
         },
         config: {
             chatProtocol: {
