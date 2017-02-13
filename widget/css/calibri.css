@@ -1,4 +1,3 @@
-*,
 .row {
     margin: 0;
     padding: 0;
@@ -70,6 +69,7 @@
 
 .msg-client-text {
     padding: 5px 0;
+    word-wrap: break-word
 }
 
 .msg-admin-text {
@@ -77,17 +77,19 @@
 }
 
 .msg-time-client {
-    width: 35px;
+    width: 40px;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 1px;
+    font-size: .75em;
 }
 
 .msg-time-admin {
-    width: 35px;
+    width: 40px;
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 0;
+    left: 2px;
+    font-size: .75em;
 }
 
 .calibri-footer {
