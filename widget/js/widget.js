@@ -1,6 +1,11 @@
+'use strict';
+
 require('jsrender');
 
-var config = require('./config');
+var config = require('./config'),
+    LoginView = require('./views/login'),
+    ChatView = require('./views/chat'),
+    baseTmpl = require('../templates/layout.html');
 
 $.widget('custom.calibri', {
     options: {
@@ -12,28 +17,28 @@ $.widget('custom.calibri', {
     },
 
     _create: function () {
-        var html = $.templates(config.TEMPLATES.login)(),
-            QBApp = this.options.quickblox;
-
-        this.element.addClass('calibri');
-        this.element.html(html);
         this._build();
+        this._bindEvents();
 
-        this.service = QB;
-        this.service.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config.QB.config);
-        this.service.createSession(function(err, result) {
-            if (err) {
-                console.log(err.detail);
-            } else {
-                console.log(result);
-            }
-        });
+        this.viewport.trigger('changeView', ['login']);
     },
 
     _build: function () {
-        var self = this;
+        var template = $.templates(baseTmpl);
 
-        self.element.resizable({
+        this.element.addClass('calibri');
+        this.element.html(template());
+
+        this._addPlugins();
+        this._createViews();
+    },
+
+    _addPlugins: function () {
+        this.element.draggable({
+            containment: 'document',
+            handle: '.js-header'
+        });
+        this.element.resizable({
             ghost: true,
             animate: true,
             maxHeight: 560,
@@ -41,27 +46,30 @@ $.widget('custom.calibri', {
             minHeight: 370,
             minWidth: 270
         });
+    },
 
-        // self.element.find('.calibri-header').on('mousedown', function () {
-            self.element.draggable({
-                containment: 'document',
-                handle: '.calibri-header'
-            });
-        // });
+    _createViews: function () {
+        this.viewport = this.element.find('.js-content');
+        this.views = {
+            login: new LoginView(this),
+            chat: new ChatView(this)
+        };
+    },
 
-        self.element.find('.close-reg-chat').on('mousedown', function () {
-            self.element.addClass('hiden');
-        });
+    _bindEvents: function () {
+        this.element.on('click', '.js-close', this.destroy.bind(this));
+        this.viewport.on('changeView', this._render.bind(this));
+    },
 
-        // $('.close-talk-chat').on('mousedown', function () {
-        //     $('.talk-chat').addClass('hiden');
-        // });
+    _render: function (event, viewName) {
+        this.views[viewName].render();
     },
 
     _destroy: function () {
-        this.element.resizable("destroy");
-        this.element.draggable("destroy");
+        this.element.draggable('destroy');
+        this.element.resizable('destroy');
         this.element.removeAttr('class style');
         this.element.empty();
+        this.element.off();
     }
 });

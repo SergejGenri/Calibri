@@ -1,114 +1,118 @@
 *,
 .row {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .calibri {
-	width: 270px;
-	height: 370px;
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
-	background: linear-gradient(to bottom, rgba(183, 222, 237, 1) 0%, rgba(255, 255, 255, 1) 100%);
-	box-shadow: 0 0 10px 2px rgb(171, 180, 180), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.15) inset;
-	border-radius: 5px 30px 5px 5px;
+    width: 270px;
+    height: 370px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background: linear-gradient(to bottom, rgba(183, 222, 237, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: 0 0 10px 2px rgb(171, 180, 180), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 80px rgba(0, 0, 0, 0.15) inset;
+    border-radius: 5px 30px 5px 5px;
 }
 
 .calibri-header {
-	height: 50px;
-	width: 100%;
-	background-color: #23283C;
-	border-radius: 5px 30px 0 0;
-	cursor: move;
+    height: 50px;
+    width: 100%;
+    background-color: #23283C;
+    border-radius: 5px 30px 0 0;
+    cursor: move;
 }
 
 .msg-title {
-	width: 190px;
-	color: #fff;
-	font-size: 1em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	padding: 15px 0 0 10px;
-	cursor: pointer;
+    width: 190px;
+    color: #fff;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px 0 0 10px;
+    cursor: pointer;
 }
 
 .close {
-	color: #fff;
-	position: relative;
-	bottom: 20px;
-	right: 20px;
+    color: #fff;
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+}
+
+.calibri-content {
+    height: 100%;
 }
 
 .calibri-scrollbar {
-	height: 65%;
-	width: 100%;
-	overflow: auto;
+    height: 65%;
+    width: 100%;
+    overflow: auto;
 }
 
 .msg-client {
-	background-color: #008FC3;
-	color: #fff;
-	font-size: .9em;
-	margin: 5px 0;
-	padding: 5px;
+    background-color: #008FC3;
+    color: #fff;
+    font-size: .9em;
+    margin: 5px 0;
+    padding: 5px;
 }
 
 .msg-admin {
-	background-color: #18B9F3;
-	color: #fff;
-	font-size: .9em;
-	padding: 5px;
-	margin: 5px 0 5px 8.33333333%;
+    background-color: #18B9F3;
+    color: #fff;
+    font-size: .9em;
+    padding: 5px;
+    margin: 5px 0 5px 8.33333333%;
 }
 
 .msg-client-text {
-	padding: 5px 0;
+    padding: 5px 0;
 }
 
 .msg-admin-text {
-	padding: 5px 0;
+    padding: 5px 0;
 }
 
 .msg-time-client {
-	width: 35px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
+    width: 35px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 .msg-time-admin {
-	width: 35px;
-	position: absolute;
-	top: 5px;
-	left: 5px;
+    width: 35px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }
 
 .calibri-footer {
-	width: 100%;
-	height: 50px;
-	position: absolute;
-	bottom: 10px;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
 }
 
 .msg-text {
-	width: 75%;
-	height: 42px;
-	float: left;
-	resize: none;
-	min-height: 50px;
-	max-height: 50px;
+    width: 75%;
+    height: 42px;
+    float: left;
+    resize: none;
+    min-height: 50px;
+    max-height: 50px;
 }
 
 .send-btn {
-	width: 25%;
-	height: 50px;
-	float: right;
+    width: 25%;
+    height: 50px;
+    float: right;
 }
 
 .reg-form {
-	margin-top: 40%;
+    margin-top: 40%;
 }
 
 .form-group input {
@@ -116,40 +120,37 @@
 }
 
 .loader-box {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .loader-gif {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-}
-
-.hiden {
-	display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 @media screen and (max-width: 768px) {
-	.calibri {
-		width: 100%;
-		height: 100%;
-		border-radius: 0;
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
+    .calibri {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 
-	.calibri-header {
-		width: 100%;
-		border-radius: 0;
-	}
+    .calibri-header {
+        width: 100%;
+        border-radius: 0;
+    }
 
-	.reg-form {
-		margin-top: 100px;
-	}
+    .reg-form {
+        margin-top: 100px;
+    }
+}

@@ -1,3 +1,5 @@
+'use strict';
+
 var config = {
     // QuickBlox SDK settings
     QB: {
@@ -18,12 +20,6 @@ var config = {
                 file: null
             }
         }
-    },
-
-    TEMPLATES: {
-        login: require('../templates/login.html'),
-        loading: require('../templates/loading.html'),
-        chat: require('../templates/chat.html')
     }
 };
 
