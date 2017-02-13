@@ -1,0 +1,14 @@
+<div class="row">
+    {{if isAdmin}}
+    <div class="msg-admin col-md-11 col-xs-11">
+        <div class="msg-time-admin">{{: time}}</div>
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="msg-admin-text col-md-10 col-xs-10">{{: text}}</div>
+    </div>
+    {{else}}
+    <div class="msg-client col-md-11 col-xs-11">
+        <div class="msg-client-text col-md-10 col-xs-10">{{: text}}</div>
+        <div class="msg-time-client">{{: time}}</div>
+    </div>
+    {{/if}}
+</div>

@@ -6,10 +6,10 @@ var config = require('../config'),
     tmpl = require('../../templates/login.html');
 
 function LoginView(widget) {
-    this.currentUser = null;
     this.widget = widget;
     this.viewport = widget.viewport;
     this.service = widget.service;
+    this.currentUser = widget.currentUser;
     this.init();
 }
 
@@ -37,14 +37,10 @@ LoginView.prototype.submit = function (event) {
 /* START: QuickBlox connect to chat logic
 -------------------------------------------------------------------- */
 LoginView.prototype._createSession = function (nickname) {
-    var QBApp = this.widget.options.quickblox;
-
     this.currentUser = {
         login: nickname,
         password: config.defaultPass
     };
-
-    this.service.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config.QB.config);
     this.service.createSession(this.currentUser, this._onCreateSession.bind(this));
 };
 

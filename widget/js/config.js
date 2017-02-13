@@ -22,7 +22,13 @@ var config = {
         }
     },
 
-    defaultPass: '123123123'
+    admin: {
+        id: 23957181,
+        name: 'DemoChatUser1'
+    },
+
+    defaultPass: '123123123',
+    startMessage: 'Hello! How can I help you?'
 };
 
 module.exports = config;

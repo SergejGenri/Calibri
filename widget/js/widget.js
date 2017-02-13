@@ -10,6 +10,8 @@ var config = require('./config'),
 
 $.widget('custom.calibri', {
     options: {
+        startMessage: config.startMessage,
+        admin: config.admin,
         quickblox: {
             appId: config.QB.app.id,
             authKey: config.QB.app.authKey,
@@ -18,19 +20,28 @@ $.widget('custom.calibri', {
     },
 
     _create: function () {
+        this.currentUser = {};
         this.service = QB;
 
+        this._serviceInit();
         this._build();
         this._bindEvents();
 
         this.viewport.trigger('changeView', ['login']);
     },
 
+    _serviceInit: function () {
+        var QBApp = this.options.quickblox;
+        this.service.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config.QB.config);
+    },
+
     _build: function () {
         var template = $.templates(baseTmpl);
 
         this.element.addClass('calibri');
-        this.element.html(template());
+        this.element.html(template({
+            title: this.options.admin.name
+        }));
 
         this._addPlugins();
         this._createViews();
