@@ -4,6 +4,7 @@ require('jsrender');
 
 var config = require('./config'),
     LoginView = require('./views/login'),
+    LoadingView = require('./views/loading'),
     ChatView = require('./views/chat'),
     baseTmpl = require('../templates/layout.html');
 
@@ -17,6 +18,8 @@ $.widget('custom.calibri', {
     },
 
     _create: function () {
+        this.service = QB;
+
         this._build();
         this._bindEvents();
 
@@ -52,6 +55,7 @@ $.widget('custom.calibri', {
         this.viewport = this.element.find('.js-content');
         this.views = {
             login: new LoginView(this),
+            loading: new LoadingView(this),
             chat: new ChatView(this)
         };
     },
@@ -66,6 +70,7 @@ $.widget('custom.calibri', {
     },
 
     _destroy: function () {
+        this.service.chat.disconnect();
         this.element.draggable('destroy');
         this.element.resizable('destroy');
         this.element.removeAttr('class style');

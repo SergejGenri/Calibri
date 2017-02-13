@@ -20,7 +20,9 @@ var config = {
                 file: null
             }
         }
-    }
+    },
+
+    defaultPass: '123123123'
 };
 
 module.exports = config;
