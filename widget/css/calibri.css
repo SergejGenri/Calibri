@@ -135,7 +135,7 @@
     margin: auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1025px) {
     .calibri {
         height: 100%;
         border-radius: 0;
