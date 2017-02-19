@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>QuickBlox JavaScript Chat code sample</title>
-    <link rel="shortcut icon" href="https://quickblox.com/favicon.ico">
+    <title>Calibri chat</title>
+    <!--<link rel="shortcut icon" href="https://quickblox.com/favicon.ico">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="libs/stickerpipe/css/stickerpipe.min.css">-->
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/connection.js"></script>
+    <!--<script src="js/connection.js"></script>-->
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -19,7 +19,7 @@
                     <span class="glyphicon glyphicon-cog"></span>
                 </button>
 
-                <a href="https://quickblox.com/developers/Chat">
+                <a href="#">
                     <img src="images/logo-quickblox.png" id="logo">
                 </a>
             </div>
@@ -29,9 +29,9 @@
                     <li class="active">
                         <a href="#">Chat</a>
                     </li>
-                    <li>
-                        <a href="#" onclick="showNewDialogPopup()">Create dialog</a>
-                    </li>
+                    <!--<li>-->
+                        <!--<a href="#" onclick="showNewDialogPopup()">Create dialog</a>-->
+                    <!--</li>-->
                     <li>
                         <a href="#" onclick="showDialogInfoPopup()">Dialog info</a>
                     </li>
@@ -40,10 +40,10 @@
                     </li>
                 </ul>
 
-                <a href="https://github.com/QuickBlox/quickblox-javascript-sdk/tree/gh-pages/samples/chat"
-                	style="position:absolute;top:20px;right:12%;font-size:0.85em;color:grey;">
-                    View source on GitHub
-                </a>
+                <!--<a href="https://github.com/QuickBlox/quickblox-javascript-sdk/tree/gh-pages/samples/chat"-->
+                	<!--style="position:absolute;top:20px;right:12%;font-size:0.85em;color:grey;">-->
+                    <!--View source on GitHub-->
+                <!--</a>-->
             </div><!--/.nav-collapse -->
         </div>
     </div>
@@ -58,7 +58,7 @@
 
               <div class="col-md-4">
                 <div class="list-header">
-                  <h4 class="list-header-title">History</h4>
+                  <h4 class="list-header-title">Dialogs</h4>
                 </div>
                 <div class="list-group pre-scrollable nice-scroll" id="dialogs-list">
 
@@ -80,14 +80,14 @@
                   <div class="input-group">
                     <span class="input-group-btn input-group-btn_change_load">
   	                  <input id="load-img" type="file">
-  	                <button type="button" id="attach_btn" class="btn btn-default" onclick="$('#load-img').click();">
-  		              <i class="icon-photo"></i>
-  	                </button>
+  	                <!--<button type="button" id="attach_btn" class="btn btn-default" onclick="$('#load-img').click();">-->
+  		              <!--<i class="icon-photo"></i>-->
+  	                <!--</button>-->
                     </span>
                     <span class="input-group-btn input-group-btn_change_load">
-  	                <button type="button" id="stickers_btn" class="btn btn-default" onclick="">
-  		              <i class="icon-sticker"></i>
-  	                </button>
+  	                <!--<button type="button" id="stickers_btn" class="btn btn-default" onclick="">-->
+  		              <!--<i class="icon-sticker"></i>-->
+  	                <!--</button>-->
                     </span>
 
                     <span class="input-group-btn" style="width: 100%;">
@@ -109,15 +109,35 @@
     </div>
 
     <!-- Modal (login to chat)-->
-    <div id="loginForm" class="modal fade" role="dialog">
+    <div id="loginForm" class="modal fade" role="dialog" data-backdrop="static">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title">Sign In to QuickBlox Chat demo</h3>
+            <h3 class="modal-title">Chat Admin Panel</h3>
           </div>
           <div class="modal-body">
-            <button type="button" value="Quick" id="user1" class="btn btn-primary btn-lg btn-block">Sign in with DemoChatUser1</button>
-            <button type="button" value="Blox" id="user2" class="btn btn-success btn-lg btn-block">Sign in with DemoChatUser2</button>
+            <!--<button type="button" value="Quick" id="user1" class="btn btn-primary btn-lg btn-block">Sign in with DemoChatUser1</button>-->
+            <!--<button type="button" value="Blox" id="user2" class="btn btn-success btn-lg btn-block">Sign in with DemoChatUser2</button>-->
+              <form class="form-horizontal">
+                  <div class="form-group">
+                      <label for="inputlogin13" class="col-sm-2 control-label">Login</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="form-control" id="inputlogin13" placeholder="Login">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" id="loginUser" class="btn btn-primary">Sign in</button>
+                      </div>
+                  </div>
+              </form>
+
             <div class="progress">
               <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
               </div>

@@ -34,8 +34,8 @@ function buildMessageHTML(messageText, messageSenderId, messageDateSent, attachm
 				'<h4 class="list-group-item-heading">'+messageSenderId+'</h4>'+
 				'<p class="list-group-item-text">'+
 					messageTextHtml +
-				'</p>'
-				+delivered+read+
+				'</p>'+
+				// +delivered+read+
 			'</div>';
   return messageHtml;
 }

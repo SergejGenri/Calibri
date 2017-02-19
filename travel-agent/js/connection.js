@@ -7,15 +7,24 @@ $(function() {
     $('#loginForm').modal('show');
     $('#loginForm .progress').hide();
 
-    $('#user1').on('click', function() {
-        currentUser = QBUser1;
-        connectToChat(QBUser1);
+    $('#loginUser').on('click', function(event) {
+        event.preventDefault();
+        var login = $('#loginForm').find('input:text').val().trim(),
+            pass = $('#loginForm').find('input:password').val().trim();
+
+        // currentUser = QBUser1;
+        if (login && pass) {
+            connectToChat({
+                login: login,
+                pass: pass
+            });
+        }
     });
 
-    $('#user2').on('click', function() {
-        currentUser = QBUser2;
-        connectToChat(QBUser2);
-    });
+    // $('#user2').on('click', function() {
+    //     currentUser = QBUser2;
+    //     connectToChat(QBUser2);
+    // });
 
     var niceScrollSettings = {
         cursorcolor:'#02B923',
@@ -28,13 +37,14 @@ $(function() {
 });
 
 function connectToChat(user) {
-    $('#loginForm button').hide();
+    $('#loginForm form').hide();
     $('#loginForm .progress').show();
 
     QB.createSession({login: user.login, password: user.pass}, function(err, res) {
         if (res) {
             token = res.token;
             user.id = res.user_id;
+            currentUser = user;
 
             mergeUsers([{user: user}]);
 
@@ -56,6 +66,8 @@ function connectToChat(user) {
                     setupStreamManagementListeners();
                 }
             });
+        } else {
+            alert(err.detail);
         }
     });
 }
