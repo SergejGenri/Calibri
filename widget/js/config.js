@@ -24,7 +24,7 @@ var config = {
 
     admin: {
         id: 23957181,
-        name: 'DemoChatUser1'
+        name: 'TravelAgent1'
     },
 
     defaultPass: '123123123',

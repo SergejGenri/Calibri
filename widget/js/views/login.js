@@ -64,6 +64,7 @@ LoginView.prototype._createUser = function () {
 LoginView.prototype._onCreateUser = function (err, res) {
     if (err) {
         console.log(err);
+        alert(err.detail);
     } else {
         this._login();
     }

@@ -3,7 +3,9 @@
   "scripts": {
     "start": "npm run watch",
     "watch": "watchify -s ChatWidget widget/js/main.js -o widget/calibri.js -d",
-    "build:prod": "browserify -s ChatWidget widget/js/main.js | uglifyjs > widget/calibri.min.js"
+    "js:min": "browserify -s ChatWidget widget/js/main.js | uglifyjs > widget/calibri.min.js",
+    "css:min": "uglifycss widget/css/calibri.css > widget/css/calibri.min.css",
+    "build:prod": "npm run css:min && npm run js:min"
   },
   "browserify": {
     "transform": [
@@ -18,6 +20,7 @@
   "devDependencies": {
     "browserify": "^14.0.0",
     "uglify-js": "^2.7.5",
+    "uglifycss": "0.0.25",
     "watchify": "^3.9.0"
   }
 }
