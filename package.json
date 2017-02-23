@@ -5,7 +5,7 @@
     "watch": "watchify -s ChatWidget widget/js/main.js -o widget/calibri.js -d",
     "js:min": "browserify -s ChatWidget widget/js/main.js | uglifyjs > widget/calibri.min.js",
     "css:min": "uglifycss widget/css/calibri.css > widget/css/calibri.min.css",
-    "build:prod": "npm run css:min && npm run js:min"
+    "build": "npm run css:min && npm run js:min"
   },
   "browserify": {
     "transform": [

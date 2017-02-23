@@ -12,35 +12,10 @@ var config = {
         enable: true
     },
     debug: {
-        mode: 1,
+        mode: 0,
         file: null
-    },
-    stickerpipe: {
-        elId: 'stickers_btn',
-        apiKey: '847b82c49db21ecec88c510e377b452c',
-        enableEmojiTab: false,
-        enableHistoryTab: true,
-        enableStoreTab: true,
-
-        userId: null,
-
-        priceB: '0.99 $',
-        priceC: '1.99 $'
     }
 };
-
-var QBUser1 = {
-        id: 23957181,
-        name: 'DemoChatUser1',
-        login: 'DemoChatUser1',
-        pass: 'DemoChatUser1'
-    },
-    QBUser2 = {
-        id: 23957189,
-        name: 'DemoChatUser2',
-        login: 'DemoChatUser2',
-        pass: 'DemoChatUser2'
-    };
 
 var stickerpipe = null;
 
