@@ -97,7 +97,7 @@ LoginView.prototype._onConnect = function (err, res) {
 
 // QuickBlox create 1-1 dialog logic
 LoginView.prototype._createDialog = function () {
-    var adminId = this.widget.options.admin.id,
+    var adminId = +this.widget.options.admin.id,
         params = {
             type: 3,
             occupants_ids: [adminId]

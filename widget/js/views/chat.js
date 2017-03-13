@@ -54,7 +54,7 @@ ChatView.prototype.sendMessage = function (event) {
 /* START: QuickBlox 1-1 chat logic
  -------------------------------------------------------------------- */
 ChatView.prototype._sendQBMessage = function (text) {
-    var adminId = this.widget.options.admin.id,
+    var adminId = +this.widget.options.admin.id,
         msg = {
             type: 'chat',
             body: text,
