@@ -16,7 +16,8 @@ $.widget('custom.calibri', {
             appId: config.QB.app.id,
             authKey: config.QB.app.authKey,
             authSecret: config.QB.app.authSecret
-        }
+        },
+        debug: !!config.QB.config.debug.mode
     },
 
     _create: function () {
@@ -32,6 +33,10 @@ $.widget('custom.calibri', {
 
     _serviceInit: function () {
         var QBApp = this.options.quickblox;
+
+        // set debug mode
+        config.QB.config.debug.mode = +this.options.debug;
+
         this.service.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config.QB.config);
     },
 
